@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reservaciones · Entre Nubes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+    <a class="brand" href="index.html" aria-label="Entre Nubes">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22V12M12 12c0-4 3-7 7-7 0 4-3 7-7 7Zm0 0c0-4-3-7-7-7 0 4 3 7 7 7Zm0-10c0-2-1.5-4-4-4 0 2 1.5 4 4 4Z" fill="currentColor" stroke="none"/>
+      </svg>
+      <span>Entre Nubes<small>Panel anfitrion</small></span>
+    </a>
+
+    <div class="nav-group">
+      <div class="nav-label">General</div>
+      <a class="nav-link " href="alojamientosa.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2h-4v-7h-6v7H5a2 2 0 0 1-2-2Z"/></svg>
+        Alojamientos
+        <span class="count">5</span>
+      </a>
+      <a class="nav-link active" href="reservacionesa.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+        Reservaciones
+        <span class="count">42</span>
+      </a>
+      <a class="nav-link" href="huespedesa.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5a11 11 0 0 1 15 0M8 16a6 6 0 0 1 8 0"/><circle cx="12" cy="19" r="1"/></svg>
+        Huéspedes
+      </a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">Contenido</div>
+      <a class="nav-link" data-page="resenas" href="resenasa.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3 3 6 6 .9-4.5 4.2 1 6L12 17l-5.5 3 1-6L3 9.9 9 9l3-6Z"/></svg>
+        Reseñas
+      </a>
+      <a class="nav-link" data-page="reportes" href="reportesa.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        Reportes
+      </a>
+      <a class="nav-link" data-page="configuracion" href="configuraciona.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
+        Configuración
+      </a>
+    </div>
+
+    <div class="sidebar-foot">
+      <div class="avatar-sm">AR</div>
+      <div class="who">Ana Ríos<small>Anfitrión</small></div>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN ================= -->
+  <main class="main">
+
+    <div class="topbar">
+      <div>
+        <h1>Reservaciones</h1>
+        <div class="date">42 reservaciones este mes · 8 pendientes por confirmar</div>
+      </div>
+      <div class="spacer"></div>
+      <div class="top-actions">
+        <button class="btn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 11l4 4 4-4M5 19h14"/></svg>
+          Exportar
+        </button>
+    
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat">
+        <div class="label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-11"/></svg>
+          Confirmadas
+        </div>
+        <div class="value">28</div>
+        <span class="delta up">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>
+          +12% vs. agosto
+        </span>
+      </div>
+
+      <div class="stat">
+        <div class="label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          Pendientes
+        </div>
+        <div class="value">8</div>
+        <span class="delta flat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14"/></svg>
+          Por revisar
+        </span>
+      </div>
+
+      <div class="stat">
+        <div class="label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+          Canceladas
+        </div>
+        <div class="value">6</div>
+        <span class="delta down">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          −2% vs. agosto
+        </span>
+      </div>
+
+      <div class="stat">
+        <div class="label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 8h10M7 16h10"/></svg>
+          Ingresos
+        </div>
+        <div class="value">$118,400</div>
+        <span class="delta up">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>
+          +8.4% vs. agosto
+        </span>
+      </div>
+    </div>
+
+    <!-- TABLA PRINCIPAL -->
+    <div class="panel">
+      <div class="panel-head">
+        <h3>Historial de reservaciones</h3>
+        <a class="link" href="#">
+          Filtrar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M6 12h12M10 18h4"/></svg>
+        </a>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Huésped</th>
+            <th>Alojamiento</th>
+            <th>Fechas</th>
+            <th>Estado</th>
+            <th>Total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="guest">
+                <div class="avatar-tiny a1">ML</div>
+                <div><b>Mariana López</b><small>2 huéspedes</small></div>
+              </div>
+            </td>
+            <td>Cabaña Mirador</td>
+            <td>11 – 13 sep</td>
+            <td><span class="badge confirmed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-11"/></svg>Confirmada</span></td>
+            <td class="price-cell">$5,350</td>
+            <td><button class="row-action" type="button" aria-label="Opciones"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="guest">
+                <div class="avatar-tiny a2">JR</div>
+                <div><b>Jorge Ramírez</b><small>2 huéspedes</small></div>
+              </div>
+            </td>
+            <td>Refugio Niebla</td>
+            <td>15 – 17 sep</td>
+            <td><span class="badge pending"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Pendiente</span></td>
+            <td class="price-cell">$4,050</td>
+            <td><button class="row-action" type="button" aria-label="Opciones"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="guest">
+                <div class="avatar-tiny a3">LH</div>
+                <div><b>Lucía Hernández</b><small>4 huéspedes</small></div>
+              </div>
+            </td>
+            <td>Casa Bosque</td>
+            <td>18 – 20 sep</td>
+            <td><span class="badge confirmed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-11"/></svg>Confirmada</span></td>
+            <td class="price-cell">$4,750</td>
+            <td><button class="row-action" type="button" aria-label="Opciones"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="guest">
+                <div class="avatar-tiny a4">DO</div>
+                <div><b>Daniel Ortega</b><small>2 huéspedes</small></div>
+              </div>
+            </td>
+            <td>Cabaña Amanecer</td>
+            <td>22 – 24 sep</td>
+            <td><span class="badge cancelled"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>Cancelada</span></td>
+            <td class="price-cell">$4,450</td>
+            <td><button class="row-action" type="button" aria-label="Opciones"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="guest">
+                <div class="avatar-tiny a1">SP</div>
+                <div><b>Sofía Pérez</b><small>3 huéspedes</small></div>
+              </div>
+            </td>
+            <td>Refugio Montaña</td>
+            <td>25 – 28 sep</td>
+            <td><span class="badge confirmed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-11"/></svg>Confirmada</span></td>
+            <td class="price-cell">$8,250</td>
+            <td><button class="row-action" type="button" aria-label="Opciones"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="guest">
+                <div class="avatar-tiny a2">RG</div>
+                <div><b>Roberto Gil</b><small>1 huésped</small></div>
+              </div>
+            </td>
+            <td>Cabaña Mirador</td>
+            <td>29 sep – 1 oct</td>
+            <td><span class="badge pending"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Pendiente</span></td>
+            <td class="price-cell">$5,000</td>
+            <td><button class="row-action" type="button" aria-label="Opciones"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="admin-footer">
+      <span>© 2026 Entre Nubes · Panel interno</span>
+      <span>
+        <a href="index.html">Ir al sitio público</a> ·
+        <a href="#">Ayuda</a> ·
+        <a href="#">Estado del sistema</a>
+      </span>
+    </div>
+
+  </main>
+</div>
+
+<script src="sidebar.js"></script>
+</body>
+</html>

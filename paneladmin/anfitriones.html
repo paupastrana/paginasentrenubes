@@ -8,6 +8,100 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+
+<style>
+/* Estilos para el Modal de Añadir Anfitrión */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  font-size: 1.25rem;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #111827;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6b7280;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: #111827;
+}
+
+.form-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form-group input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+</style>
 </head>
 <body>
 
@@ -84,7 +178,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 11l4 4 4-4M5 19h14"/></svg>
           Exportar
         </button>
-        <button class="btn primary" type="button">
+        <button class="btn primary" id="openModalBtn" type="button">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
           Añadir anfitrión
         </button>
@@ -102,7 +196,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
           Total anfitriones
         </div>
-        <div class="value">12</div>
+        <div class="value" id="totalHostsCount">12</div>
         <span class="delta up">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>
           +2 este mes
@@ -167,7 +261,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="hostsTableBody">
           <tr>
             <td>
               <div class="guest">
@@ -268,6 +362,139 @@
   </main>
 </div>
 
+<!-- ================= MODAL ================= -->
+<div class="modal-overlay" id="hostModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Añadir Anfitrión</h2>
+      <button type="button" class="close-btn" id="closeModalBtn">&times;</button>
+    </div>
+    <form id="addHostForm">
+      <div class="form-group">
+        <label for="fullName">Nombre completo</label>
+        <input type="text" id="fullName" name="fullName" required placeholder="Ej. Ana Beltrán" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" required placeholder="ejemplo@entrenubes.mx" />
+      </div>
+
+      <div class="form-group">
+        <label for="age">Edad</label>
+        <input type="number" id="age" name="age" min="18" max="100" required placeholder="Ej. 25" />
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn" id="cancelModalBtn">Cancelar</button>
+        <button type="submit" class="btn primary">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <script src="sidebar.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const openModalBtn = idOrQuery('#openModalBtn', '.top-actions .btn.primary');
+  const modalOverlay = document.getElementById('hostModal');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const cancelModalBtn = document.getElementById('cancelModalBtn');
+  const hostForm = document.getElementById('addHostForm');
+  const tableBody = document.getElementById('hostsTableBody');
+  const totalStat = document.getElementById('totalHostsCount');
+
+  function idOrQuery(id, query) {
+    return document.querySelector(id) || document.querySelector(query);
+  }
+
+  // Abrir Modal
+  if (openModalBtn) {
+    openModalBtn.addEventListener('click', () => {
+      modalOverlay.classList.add('active');
+    });
+  }
+
+  // Cerrar Modal
+  const closeModal = () => {
+    modalOverlay.classList.remove('active');
+    hostForm.reset();
+  };
+
+  closeModalBtn.addEventListener('click', closeModal);
+  cancelModalBtn.addEventListener('click', closeModal);
+
+  // Cerrar al dar clic en el fondo oscuro
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
+  });
+
+  // Procesar Formulario
+  hostForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const fullName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const age = parseInt(document.getElementById('age').value, 10);
+
+    if (age < 18) {
+      alert('El anfitrión debe ser mayor de 18 años.');
+      return;
+    }
+
+    // Generar iniciales para el avatar
+    const nameParts = fullName.split(' ').filter(Boolean);
+    let initials = 'AN';
+    if (nameParts.length >= 2) {
+      initials = `${nameParts[0][0]}${nameParts[1][0]}`.toUpperCase();
+    } else if (nameParts.length === 1) {
+      initials = nameParts[0].substring(0, 2).toUpperCase();
+    }
+
+    const currentYear = new Date().getFullYear();
+    const avatarClasses = ['a1', 'a2', 'a3', 'a4'];
+    const randomAvatarClass = avatarClasses[Math.floor(Math.random() * avatarClasses.length)];
+
+    // Crear la nueva fila de la tabla
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+      <td>
+        <div class="guest">
+          <div class="avatar-tiny ${randomAvatarClass}">${initials}</div>
+          <div><b>${fullName}</b><small>Desde ${currentYear} (${age} años)</small></div>
+        </div>
+      </td>
+      <td>0 propiedades</td>
+      <td>${email}</td>
+      <td>
+        <span class="badge confirmed">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m5 12 5 5 9-11"/>
+          </svg>Activo
+        </span>
+      </td>
+      <td class="price-cell">$0</td>
+      <td>
+        <button class="row-action" type="button" aria-label="Opciones">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/>
+          </svg>
+        </button>
+      </td>
+    `;
+
+    // Insertar la fila al inicio de la tabla
+    tableBody.prepend(newRow);
+
+    // Incrementar el número total en la tarjeta de estadísticas
+    if (totalStat) {
+      const currentCount = parseInt(totalStat.textContent, 10) || 0;
+      totalStat.textContent = currentCount + 1;
+    }
+
+    closeModal();
+  });
+});
+</script>
 </body>
 </html>
