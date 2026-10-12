@@ -235,39 +235,40 @@ label.field-label{
         </div>
       </div>
 
-      <div class="box">
+      <!-- Formulario para validar campos y pasar a recibo.html -->
+      <form id="formReserva" class="box">
         <h3>Tus datos</h3>
         <label class="field-label" for="nombre">Nombre completo</label>
-        <input class="input" id="nombre" required autocomplete="name">
+        <input class="input" id="nombre" required autocomplete="name" placeholder="Ej. María Fernanda López">
 
         <label class="field-label" for="email">Correo electrónico</label>
-        <input class="input" id="email" type="email" required autocomplete="email">
+        <input class="input" id="email" type="email" required autocomplete="email" placeholder="correo@example.com">
 
         <label class="field-label" for="tel">Teléfono</label>
-        <input class="input" id="tel" type="tel" autocomplete="tel">
+        <input class="input" id="tel" type="tel" required autocomplete="tel" placeholder="+52 951 123 4567">
 
         <h3 style="margin-top:26px">Pago</h3>
         <label class="field-label" for="card">Número de tarjeta (simulado)</label>
-        <input class="input" id="card" inputmode="numeric" placeholder="0000 0000 0000 0000" autocomplete="cc-number">
+        <input class="input" id="card" required inputmode="numeric" placeholder="0000 0000 0000 0000" autocomplete="cc-number">
 
         <div class="input-row">
           <div>
             <label class="field-label" for="exp">Vencimiento</label>
-            <input class="input" id="exp" placeholder="MM/AA" autocomplete="cc-exp">
+            <input class="input" id="exp" required placeholder="MM/AA" autocomplete="cc-exp">
           </div>
           <div>
             <label class="field-label" for="cvv">CVV</label>
-            <input class="input" id="cvv" placeholder="123" autocomplete="cc-csc">
+            <input class="input" id="cvv" required placeholder="123" autocomplete="cc-csc">
           </div>
         </div>
 
         <label class="check">
-          <input type="checkbox">
+          <input type="checkbox" id="terminos" required>
           <span>Acepto las políticas de reserva y cancelación.</span>
         </label>
 
-        <button class="pay" type="button">Confirmar y pagar · $5,350 MXN</button>
-      </div>
+        <button class="pay" type="submit">Confirmar y pagar · $5,350 MXN</button>
+      </form>
     </main>
 
     <aside>
@@ -295,5 +296,19 @@ label.field-label{
   </div>
 </div>
 
+<script>
+  document.getElementById('formReserva').addEventListener('submit', function(e) {
+    e.preventDefault(); // Evitamos que recargue la página por defecto
+    
+    // Guardamos opcionalmente los datos en localStorage para usarlos luego con Strapi o mostrarlos
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    localStorage.setItem('reserva_nombre', nombre);
+    localStorage.setItem('reserva_email', email);
+
+    // Redirigimos a la vista del recibo
+    window.location.href = 'recibo.html';
+  });
+</script>
 </body>
 </html>
