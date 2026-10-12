@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Iniciar Sesión · Entre Nubes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style_auth.css">
+</head>
+<body>
+
+<div class="auth-card">
+  <!-- Logotipo -->
+  <a class="auth-brand" href="../index.html" aria-label="Entre Nubes">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22V12M12 12c0-4 3-7 7-7 0 4-3 7-7 7Zm0 0c0-4-3-7-7-7 0 4 3 7 7 7Zm0-10c0-2-1.5-4-4-4 0 2 1.5 4 4 4Z" fill="currentColor" stroke="none"/>
+    </svg>
+    <span>Entre Nubes<small>Huéspedes & Clientes</small></span>
+  </a>
+
+  <div class="auth-header">
+    <h1>Bienvenido de nuevo</h1>
+    <p>Ingresa tus credenciales para acceder</p>
+  </div>
+
+  <form id="loginForm">
+    <div class="form-group">
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" required placeholder="tu@correo.com" />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" name="password" required placeholder="••••••••" />
+    </div>
+
+    <div class="form-actions">
+      <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; color: #4a6356;">
+        <input type="checkbox" /> Recuérdame
+      </label>
+      <a href="#">¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <button type="submit" class="btn-primary">Iniciar sesión</button>
+  </form>
+
+  <div class="auth-footer">
+    ¿No tienes cuenta? <a href="registro.html">Registrarme</a>
+  </div>
+</div>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+
+  if (email && password.length >= 6) {
+    window.location.href = 'admin.html';
+  } else {
+    alert('Por favor introduce credenciales válidas (contraseña mínima de 6 caracteres).');
+  }
+});
+</script>
+
+</body>
+</html>
