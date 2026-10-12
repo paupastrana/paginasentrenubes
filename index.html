@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Entre Nubes · Alojamientos en Ixtlán de Juárez</title>
+<title>Entre Nubes · Alojamientos en Capulálpam de Méndez</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -313,7 +313,7 @@ img{display:block;max-width:100%}
 <body>
 
 <nav class="nav">
-  <a class="logo" href="../index.html" aria-label="Entre Nubes, inicio">
+  <a class="logo" href="index.html" aria-label="Entre Nubes, inicio">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M12 22V12M12 12c0-4 3-7 7-7 0 4-3 7-7 7Zm0 0c0-4-3-7-7-7 0 4 3 7 7 7Zm0-10c0-2-1.5-4-4-4 0 2 1.5 4 4 4Z" fill="currentColor" stroke="none"/>
     </svg>
@@ -326,11 +326,14 @@ img{display:block;max-width:100%}
       </svg>
       MXN · Español
     </button>
-    <button class="pill" type="button" aria-label="Menú">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
-        <path d="M4 7h16M4 12h16M4 17h16"/>
+    
+    <!-- Botón dinámico de autenticación / cuenta -->
+    <a class="pill" id="authButton" href="login.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>
       </svg>
-    </button>
+      <span id="authButtonText">Iniciar sesión</span>
+    </a>
   </div>
 </nav>
 
@@ -339,7 +342,7 @@ img{display:block;max-width:100%}
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/>
     </svg>
-    Buscando en <b>Ixtlán de Juárez, Oaxaca</b>
+    Buscando en <b>Capulálpam de Méndez, Oaxaca</b>
   </div>
 
   <form class="search" action="propiedad.html">
@@ -409,7 +412,7 @@ img{display:block;max-width:100%}
 <main class="layout">
   <section>
     <h2 class="section-title">
-      <span class="dot">◆</span>Estancias en Ixtlán de Juárez
+      <span class="dot">◆</span>Estancias en Capulálpam de Méndez
     </h2>
     <p class="meta">
       Alojamientos disponibles · Ordenados por recomendación
@@ -432,14 +435,14 @@ img{display:block;max-width:100%}
       <div class="pin p1">$2,500</div>
       <div class="pin p2">$1,850</div>
       <div class="pin p3">$2,100</div>
-      <div class="mapnote">Mapa ilustrativo de Ixtlán de Juárez · las ubicaciones exactas se mostrarían al integrar un proveedor de mapas.</div>
+      <div class="mapnote">Mapa ilustrativo de Capulálpam de Méndez · las ubicaciones exactas se mostrarían al integrar un proveedor de mapas.</div>
     </div>
   </aside>
 </main>
 
 <section class="section">
   <h2 class="section-title">
-    <span class="dot">◆</span>Más alojamientos en Ixtlán de Juárez
+    <span class="dot">◆</span>Más alojamientos en Capulálpam de Méndez
   </h2>
   <p class="meta">Otras cabañas y refugios dentro de la misma zona.</p>
   <div class="suggest">
@@ -486,26 +489,22 @@ img{display:block;max-width:100%}
         const propiedades = res.data;
         
         propiedades.forEach(prop => {
-          // Strapi v5 entrega los datos directos, sin ".attributes"
-          
-          // Procesamos la imagen
           let urlImagen = 'https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=900'; 
           if(prop.Imagenes && prop.Imagenes.length > 0) {
              urlImagen = 'http://localhost:1337' + prop.Imagenes[0].url;
           }
           
-          // Inyectamos el HTML dinámico
           contenedor.innerHTML += `
             <a class="card" href="propiedad.html?id=${prop.documentId || prop.id}">
               <div class="photo">
                 <img src="${urlImagen}" alt="${prop.Titulo}">
-                <span class="tag">Ixtlán de Juárez</span>
+                <span class="tag">Capulálpam de Méndez</span>
                 <button class="heart" type="button" aria-label="Guardar en favoritos">
                   <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28c7-4.7 14-10.2 14-17a7 7 0 0 0-14-1.4A7 7 0 0 0 2 11c0 6.8 7 12.3 14 17Z"/></svg>
                 </button>
               </div>
               <div class="info">
-                <div class="title">${prop.Titulo || 'Cabaña en Ixtlán de Juárez'}</div>
+                <div class="title">${prop.Titulo || 'Cabaña en Capulálpam de Méndez'}</div>
                 <div class="meta">${prop.Huespedes || 2} huéspedes · ${prop.Habitaciones || 1} hab · ${prop.Banos || 1} baños</div>
                 <div class="rating-line"><span class="star">★</span> Nuevo</div>
                 <p class="desc">${prop.Descripcion ? prop.Descripcion.substring(0, 70) + '...' : ''}</p>
@@ -520,6 +519,26 @@ img{display:block;max-width:100%}
       console.error('Error procesando datos:', error);
       document.getElementById('lista-cabanas').innerHTML = '<p style="grid-column: 1/-1; color: var(--rose);">Ocurrió un error leyendo los datos de Strapi.</p>';
     });
+
+  // 3. Control de sesión dinámico (Ejecución directa segura)
+  const gestionarSesion = () => {
+    const authButton = document.getElementById('authButton');
+    const authButtonText = document.getElementById('authButtonText');
+    if (!authButton) return;
+
+    const usuarioActivo = localStorage.getItem('reserva_nombre');
+    
+    if (usuarioActivo) {
+      authButton.href = 'usuario.html';
+      authButtonText.textContent = usuarioActivo.split(' ')[0];
+    } else {
+      authButton.href = 'login.html';
+      authButtonText.textContent = 'Iniciar sesión';
+    }
+  };
+
+  // Ejecutamos la función de sesión inmediatamente
+  gestionarSesion();
 </script>
 </body>
 </html>
