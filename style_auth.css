@@ -1,0 +1,204 @@
+
+/* Reset global de box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f2f7f4; /* Fondo verde muy claro/fresco */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 24px 16px;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #1e2923;
+}
+
+/* Tarjeta Principal */
+.auth-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px 32px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 10px 30px rgba(20, 50, 35, 0.08);
+  border: 1px solid #e1ebe5;
+}
+
+/* Logotipo / Marca */
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #153e2b; /* Verde oscuro bosque */
+  margin-bottom: 24px;
+  justify-content: center;
+}
+
+.auth-brand svg {
+  width: 34px;
+  height: 34px;
+  color: #16a34a; /* Verde esmeralda primario */
+}
+
+.auth-brand span {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.auth-brand small {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #52796f;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Encabezados */
+.auth-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.auth-header h1 {
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  color: #153e2b;
+  margin: 0 0 6px 0;
+}
+
+.auth-header p {
+  font-size: 0.875rem;
+  color: #52796f;
+  margin: 0;
+}
+
+/* Formulario & Campos */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #2c4a3b;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #c8dbc8;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  background-color: #fafdfb;
+  color: #1e2923;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #16a34a;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+}
+
+/* Checkbox & Links secundarios */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  margin-bottom: 24px;
+}
+
+.terms-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.825rem;
+  color: #4a6356;
+  margin-bottom: 20px;
+}
+
+.terms-group input,
+.form-actions input[type="checkbox"] {
+  width: auto;
+  margin-top: 3px;
+  accent-color: #16a34a;
+  cursor: pointer;
+}
+
+.terms-group a,
+.form-actions a {
+  color: #16a34a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms-group a:hover,
+.form-actions a:hover {
+  text-decoration: underline;
+  color: #117b37;
+}
+
+/* Botón Principal */
+.btn-primary {
+  width: 100%;
+  background-color: #153e2b; /* Verde oscuro elegante */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background-color: #117b37; /* Verde esmeralda vivo al pasar el cursor */
+}
+
+.btn-primary:active {
+  transform: scale(0.99);
+}
+
+/* Pie de tarjeta */
+.auth-footer {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.85rem;
+  color: #52796f;
+}
+
+.auth-footer a {
+  color: #16a34a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+  color: #117b37;
+}
